@@ -17,7 +17,7 @@ namespace org.apache.zeppelin.client {
     /// You can use this class to operate Zeppelin note/paragraph,
     /// e.g. get/add/delete/update/execute/cancel
     /// </summary>
-    class ZeppelinClient {
+    public class ZeppelinClient {
         private ClientConfig ClientConfig;
         private HttpClient Client;
 
@@ -135,6 +135,20 @@ namespace org.apache.zeppelin.client {
             jObject.Add("name", notePath);
             jObject.Add("defaultInterpreterGroup", defaultInterpreterGroup);
             var response = await Client.PostAsync("/notebook", new StringContent(jObject.ToString(), Encoding.UTF8, "application/json"));
+            response.EnsureSuccessStatusCode();
+
+            var stringResponse = await response.Content.ReadAsStringAsync();
+            var jObjectBody = JObject.Parse(stringResponse);
+            CheckNodeStatus(jObjectBody);
+
+            return jObjectBody.SelectToken("body").ToObject<string>();
+        }
+
+        public async Task<string> CloneNote(string notePath, string noteId, string defaultInterpreterGroup = "") {
+            var jObject = new JObject();
+            jObject.Add("name", notePath);
+            jObject.Add("defaultInterpreterGroup", defaultInterpreterGroup);
+            var response = await Client.PostAsync($"/notebook/{noteId}", new StringContent(jObject.ToString(), Encoding.UTF8, "application/json"));
             response.EnsureSuccessStatusCode();
 
             var stringResponse = await response.Content.ReadAsStringAsync();

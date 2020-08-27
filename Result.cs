@@ -8,7 +8,7 @@ namespace org.apache.zeppelin.client {
     /// Represent one segment of result of paragraph. The result of paragraph could consists of
     /// multiple Results.
     /// </summary>
-    class Result {
+    public class Result {
         public string Type { get; set; }
         public string Data { get; set; }
         public Result(JToken jObject) {

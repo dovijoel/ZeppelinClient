@@ -6,7 +6,7 @@ namespace org.apache.zeppelin.client {
     /// <summary>
     /// Represents the note execution result
     /// </summary>
-    class NoteResult {
+    public class NoteResult {
         public string NoteId { get; set; }
         public bool IsRunning { get; set; }
         public List<ParagraphResult> ParagraphResults { get; set; }

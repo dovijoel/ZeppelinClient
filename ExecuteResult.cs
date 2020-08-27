@@ -3,6 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace ZeppelinClient {
-    class ExecuteResult {
+    public class ExecuteResult {
     }
 }

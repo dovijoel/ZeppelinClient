@@ -13,7 +13,7 @@ namespace org.apache.zeppelin.client {
     /// ERROR - Job finished run.with error
     /// ABORT - Job finished by abort
     /// </summary>
-    enum Status {
+    public enum Status {
         UNKNOWN, READY, PENDING, RUNNING, FINISHED, ERROR, ABORT
     }
 }

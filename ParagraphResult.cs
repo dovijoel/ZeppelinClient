@@ -7,7 +7,7 @@ namespace org.apache.zeppelin.client {
     /// <summary>
     /// represents the paragraph execution result
     /// </summary>
-    class ParagraphResult {
+    public class ParagraphResult {
         public string ParagraphId { get; set; }
         public Status Status { get; set; }
         public int Progress { get; set; }
